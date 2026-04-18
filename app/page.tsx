@@ -7,16 +7,16 @@ import { useState, useRef } from 'react';
 
 const SectionWrapper = ({ children, className = "", style = {} }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) => {
   const { ref, inView } = useInView({
-    threshold: 0.1,
+    threshold: 0.05,
     triggerOnce: true,
   });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.6 }}
       className={className}
       style={style}
     >
@@ -29,12 +29,11 @@ const SectionWrapper = ({ children, className = "", style = {} }: { children: Re
 const FloatingCard = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60, scale: 0.9 }}
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ 
-        duration: 0.8, 
-        delay,
-        ease: [0.22, 1, 0.36, 1]
+        duration: 0.5, 
+        delay: delay * 0.1
       }}
       whileHover={{ 
         y: -10,
@@ -51,12 +50,11 @@ const FloatingCard = ({ children, delay = 0 }: { children: React.ReactNode; dela
 const RevealText = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ 
-        duration: 0.6, 
-        delay,
-        ease: "easeOut"
+        duration: 0.5, 
+        delay: delay * 0.05
       }}
       viewport={{ once: true }}
     >
@@ -80,8 +78,8 @@ export default function Home() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
       },
     },
   };
@@ -102,7 +100,7 @@ export default function Home() {
       {/* Hero Section with Parallax */}
       <section 
         ref={heroRef}
-        className="relative h-screen text-white flex items-center" 
+        className="relative h-screen text-white flex items-center overflow-hidden" 
         style={{
           backgroundImage: 'url("/images_assets/berlin.jpg")', 
           backgroundSize: 'cover', 
@@ -115,31 +113,8 @@ export default function Home() {
           style={{ opacity }}
         />
         
-        {/* Animated background particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-white/20 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0.2, 0.5, 0.2],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
-        </div>
-        
         <motion.div 
-          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
+          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10"
           style={{ scale }}
         >
           <motion.div 
@@ -151,6 +126,7 @@ export default function Home() {
             <motion.h1 
               className="text-6xl md:text-7xl font-bold mb-6 leading-tight"
               variants={itemVariants}
+              transition={{ duration: 0.6 }}
             >
               Welcome to{" "}
               <motion.span
@@ -173,6 +149,7 @@ export default function Home() {
             <motion.p 
               className="text-xl md:text-2xl mb-8 text-blue-100"
               variants={itemVariants}
+              transition={{ duration: 0.6, delay: 0.05 }}
             >
               We will launch our digital finance for Germany in 2026.
             </motion.p>
@@ -219,7 +196,7 @@ export default function Home() {
                 className="text-4xl font-bold mb-6 text-gray-900"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
                 A new chapter for your{" "}
@@ -231,7 +208,7 @@ export default function Home() {
                 className="text-lg text-gray-600 mb-4"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.5, delay: 0.05 }}
                 viewport={{ once: true }}
               >
                 We firmly believe that digital finance needs stability, transparency, and reliability above all, without losing sight of the personal touch. That's why we're launching HelloPluro, the new digital finance for Germany – already trusted by more than 80 million customers worldwide.
@@ -240,7 +217,7 @@ export default function Home() {
                 className="text-lg text-gray-600"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
                 Our goal? To help people unlock the full potential of their money.
@@ -251,7 +228,7 @@ export default function Home() {
               className="h-96 rounded-lg overflow-hidden shadow-2xl relative group"
               initial={{ opacity: 0, x: 30, rotateY: -15 }}
               whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
               style={{
@@ -274,7 +251,7 @@ export default function Home() {
               className="h-96 rounded-lg overflow-hidden shadow-2xl relative group"
               initial={{ opacity: 0, x: -30, rotateY: 15 }}
               whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
               style={{
@@ -291,7 +268,7 @@ export default function Home() {
                 className="text-4xl font-bold mb-6 text-gray-900"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
                 Global experience meets{" "}
@@ -303,7 +280,7 @@ export default function Home() {
                 className="text-lg text-gray-600"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.5, delay: 0.05 }}
                 viewport={{ once: true }}
               >
                 HelloPluro's origins in Germany date back more than 100 years. As part of one of the world's largest finance companies, we now combine this experience from our Berlin location with a smart and user-friendly finance app specifically tailored to the needs of the German market.
@@ -331,7 +308,7 @@ export default function Home() {
                 className="text-4xl font-bold mb-6 text-gray-900"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
                 Discover what your{" "}
@@ -343,7 +320,7 @@ export default function Home() {
                 className="text-lg text-gray-600 mb-4"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.5, delay: 0.05 }}
                 viewport={{ once: true }}
               >
                 We're setting new standards to make digital finance easier than ever. We start with an intuitive app experience and offer excellent support when it matters most – because we know finance is a very personal matter.
@@ -352,7 +329,7 @@ export default function Home() {
                 className="text-lg text-gray-600"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
                 And in the long run? We'll be by your side with additional financial products to help you get closer to your goals, step by step.
@@ -361,9 +338,9 @@ export default function Home() {
             
             <motion.div 
               className="h-96 rounded-lg overflow-hidden shadow-2xl"
-              initial={{ opacity: 0, scale: 0.8, rotateZ: -5 }}
+              initial={{ opacity: 0, scale: 0.9, rotateZ: -5 }}
               whileInView={{ opacity: 1, scale: 1, rotateZ: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               whileHover={{ 
                 scale: 1.05,
@@ -384,10 +361,10 @@ export default function Home() {
       {/* CTA Section */}
       <motion.section 
         className="py-32 px-4 sm:px-6 lg:px-8 text-white rounded-3xl m-8 relative overflow-hidden"
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.98 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "0px 0px -50px 0px" }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 rounded-3xl"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 to-purple-900/80 rounded-3xl"></div>
@@ -437,7 +414,7 @@ export default function Home() {
             className="mb-6"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
             <motion.span 
@@ -450,7 +427,7 @@ export default function Home() {
                 ],
               }}
               transition={{
-                duration: 2,
+                duration: 1.5,
                 repeat: Infinity,
               }}
             >
@@ -462,7 +439,7 @@ export default function Home() {
             className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             The Future of Finance is Here
@@ -472,7 +449,7 @@ export default function Home() {
             className="text-xl md:text-2xl text-white/90 mb-2"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
             viewport={{ once: true }}
           >
             Join the digital revolution. Experience banking redefined.
@@ -482,7 +459,7 @@ export default function Home() {
             className="text-lg text-white/70 mb-10"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
             Be among the first to experience HelloPluro when we launch in 2026
@@ -492,7 +469,7 @@ export default function Home() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
             viewport={{ once: true }}
           >
             <motion.div
@@ -563,7 +540,7 @@ export default function Home() {
             className="border-t pt-8 text-center text-gray-600"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
             <p>HelloPluro is operated by</p>
