@@ -1,42 +1,217 @@
+"use client";
+
+import Image from "next/image";
+import { motion, Variants } from "framer-motion";
+
+// 🔥 ANIMATIONS
+const container: Variants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.2 },
+  },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
 export default function About() {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <h1 className="text-5xl font-bold mb-8 text-gray-900">About HelloPluro</h1>
+    <div className="bg-white">
+
+      {/* HERO */}
+      <section className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
         
-        <div className="prose prose-lg max-w-4xl">
-          <h2 className="text-3xl font-bold mt-12 mb-4 text-gray-900">A New Chapter for Finance</h2>
-          <p className="text-gray-700 mb-6">
-            HelloPluro represents a new era in digital finance. We believe that finance should be simple, transparent, and reliable, while maintaining a personal touch that matters.
-          </p>
+        {/* LEFT */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <motion.h1
+            variants={fadeUp}
+            className="text-4xl md:text-6xl font-bold text-[#0b2c6b] leading-tight"
+          >
+            About <span className="text-teal-600">Pluro</span>
+          </motion.h1>
 
-          <h2 className="text-3xl font-bold mt-12 mb-4 text-gray-900">Our Values</h2>
-          <div className="grid md:grid-cols-3 gap-6 my-8">
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="font-bold text-lg mb-2 text-blue-900">Stability</h3>
-              <p className="text-gray-700">Built on decades of financial expertise and trusted globally</p>
-            </div>
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="font-bold text-lg mb-2 text-blue-900">Transparency</h3>
-              <p className="text-gray-700">Clear pricing and honest communication with our customers</p>
-            </div>
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="font-bold text-lg mb-2 text-blue-900">Personal Touch</h3>
-              <p className="text-gray-700">Understanding and supporting your unique financial journey</p>
-            </div>
-          </div>
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 text-gray-700 text-lg max-w-lg"
+          >
+            Pluro is built to simplify one of the most stressful parts of studying
+            abroad — your visa process. From blocked accounts to health insurance,
+            we bring everything together in one seamless platform.
+          </motion.p>
 
-          <h2 className="text-3xl font-bold mt-12 mb-4 text-gray-900">Global Experience, Local Expertise</h2>
-          <p className="text-gray-700 mb-6">
-            HelloPluro combines the strength of a global finance company with deep knowledge of the German market. Our team in Berlin is dedicated to creating solutions that work for German customers.
-          </p>
+          <motion.p
+            variants={fadeUp}
+            className="mt-4 text-gray-600 max-w-lg"
+          >
+            Our goal is to remove complexity, reduce delays, and give students a
+            clear, reliable path to starting their journey in Germany with confidence.
+          </motion.p>
+        </motion.div>
 
-          <h2 className="text-3xl font-bold mt-12 mb-4 text-gray-900">Launch Timeline</h2>
-          <p className="text-gray-700">
-            We're launching our digital finance platform for Germany in 2026. Stay tuned for updates on our progress.
-          </p>
-        </div>
-      </div>
+        {/* RIGHT IMAGE */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative h-[300px] md:h-[450px] rounded-3xl overflow-hidden shadow-xl"
+        >
+          <Image
+            src="/images_assets/students4.jpg"
+            alt="about"
+            fill
+            className="object-cover"
+          />
+        </motion.div>
+      </section>
+
+      {/* VALUES */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-3xl md:text-4xl font-bold text-[#0b2c6b] mb-12 text-center"
+        >
+          Our Core Values
+        </motion.h2>
+
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-8"
+        >
+          {[
+            {
+              title: "Trust & Stability",
+              desc: "We build reliable systems that ensure your funds and documents are always secure.",
+            },
+            {
+              title: "Transparency",
+              desc: "Clear pricing, honest communication, and no hidden surprises — ever.",
+            },
+            {
+              title: "User First",
+              desc: "Everything we build is designed around the real needs of students.",
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              whileHover={{ y: -6 }}
+              className="bg-white rounded-2xl p-6 shadow-md border border-gray-100"
+            >
+              <h3 className="text-xl font-semibold text-[#0b2c6b]">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-gray-600 text-sm">{item.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* IMAGE + TEXT */}
+      <section className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
+        
+        {/* IMAGE */}
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative h-[300px] md:h-[450px] rounded-3xl overflow-hidden shadow-xl"
+        >
+          <Image
+            src="/images_assets/students.jpg"
+            alt="team"
+            fill
+            className="object-cover"
+          />
+        </motion.div>
+
+        {/* TEXT */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <motion.h2
+            variants={fadeUp}
+            className="text-3xl md:text-4xl font-bold text-[#0b2c6b]"
+          >
+            Global Vision, Local Expertise
+          </motion.h2>
+
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 text-gray-700 leading-relaxed"
+          >
+            We combine global financial experience with deep knowledge of German
+            regulations. This allows us to deliver solutions that are both reliable
+            and perfectly aligned with visa requirements.
+          </motion.p>
+
+          <motion.p
+            variants={fadeUp}
+            className="mt-4 text-gray-600"
+          >
+            Our platform is continuously evolving to provide faster processes,
+            better support, and a smoother experience for every student.
+          </motion.p>
+        </motion.div>
+      </section>
+
+      {/* TIMELINE */}
+      <section className="max-w-5xl mx-auto px-6 py-16 text-center">
+        <motion.h2
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-3xl md:text-4xl font-bold text-[#0b2c6b] mb-6"
+        >
+          Our Journey
+        </motion.h2>
+
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="text-gray-600 max-w-2xl mx-auto"
+        >
+          Pluro is building a next-generation platform to support international
+          students moving to Germany — combining speed, clarity, and trust in one place.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mt-10 bg-white rounded-2xl p-6 shadow-md inline-block"
+        >
+          <span className="text-lg font-semibold text-teal-600">
+            Launching in 2026 🚀
+          </span>
+        </motion.div>
+      </section>
+
     </div>
   );
 }

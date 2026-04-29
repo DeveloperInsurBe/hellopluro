@@ -1,105 +1,310 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useState } from 'react';
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 text-gray-900 shadow-lg transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <span className="text-2xl md:text-3xl font-bold text-blue-900 group-hover:text-blue-600 transition-all duration-300">
-              HelloPluro
-            </span>
-          </Link>
+    <nav
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 50,
+        background: "rgba(255,255,255,0.92)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderBottom: "1px solid #e5e7eb",
+        boxShadow: "0 1px 16px rgba(13,148,136,0.07)",
+        transition: "all 0.3s",
+      }}
+    >
+      {/* TOP TEAL ACCENT BAR — matches ContactModal */}
+      <div
+        style={{
+          height: "3px",
+          background: "linear-gradient(90deg, #0d9488, #14b8a6, #2dd4bf)",
+          width: "100%",
+        }}
+      />
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-1 lg:space-x-8">
-            <Link 
-              href="/" 
-              className="px-3 lg:px-4 py-2 rounded-lg transition-all duration-300 font-medium text-gray-700 hover:text-blue-900 hover:bg-blue-50"
-            >
-              Home
-            </Link>
-            <Link 
-              href="/about" 
-              className="px-3 lg:px-4 py-2 rounded-lg transition-all duration-300 font-medium text-gray-700 hover:text-blue-900 hover:bg-blue-50"
-            >
-              About
-            </Link>
-            <Link 
-              href="/services" 
-              className="px-3 lg:px-4 py-2 rounded-lg transition-all duration-300 font-medium text-gray-700 hover:text-blue-900 hover:bg-blue-50"
-            >
-              Services
-            </Link>
-            <Link 
-              href="/learn-more" 
-              className="px-3 lg:px-4 py-2 rounded-lg transition-all duration-300 font-medium text-white bg-blue-900 hover:bg-blue-800 hover:shadow-lg"
+      <div
+        style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "68px",
+          }}
+        >
+          {/* LOGO */}
+       <Link
+  href="/"
+  style={{
+    textDecoration: "none",
+    display: "flex",
+    alignItems: "center",
+  }}
+>
+  <Image
+    src="/Pluro_logo.png"
+    alt="Pluro"
+    width={140}
+    height={40}
+    priority
+    style={{
+      height: "140px",
+      width: "auto",
+      objectFit: "contain",
+    }}
+  />
+</Link>
+
+          {/* DESKTOP MENU */}
+          <div
+            style={{ display: "flex", alignItems: "center", gap: "4px" }}
+            className="navbar-desktop"
+          >
+            {(["/",  "/services", "/about"] as const).map((href, i) => {
+              const labels = ["Home", "Services", "About"];
+              return (
+                <NavLink key={href} href={href}>
+                  {labels[i]}
+                </NavLink>
+              );
+            })}
+
+            {/* CTA BUTTON */}
+            <Link
+              href="/learn-more"
+              style={{
+                marginLeft: "8px",
+                padding: "9px 20px",
+                borderRadius: "12px",
+                background: "linear-gradient(135deg, #0d9488, #0f766e)",
+                color: "#fff",
+                fontWeight: 600,
+                fontSize: "14.5px",
+                textDecoration: "none",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                transition: "opacity 0.2s, transform 0.15s",
+                letterSpacing: "0.01em",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.opacity = "0.9";
+                (e.currentTarget as HTMLAnchorElement).style.transform =
+                  "translateY(-1px)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.opacity = "1";
+                (e.currentTarget as HTMLAnchorElement).style.transform =
+                  "translateY(0)";
+              }}
             >
               Learn More
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE HAMBURGER */}
           <button
-            className="md:hidden p-2 rounded-lg transition-all duration-300 text-gray-900 hover:bg-gray-200"
             onClick={() => setIsOpen(!isOpen)}
+            style={{
+              padding: "8px",
+              borderRadius: "10px",
+              border: "1px solid #e5e7eb",
+              background: "transparent",
+              cursor: "pointer",
+              color: "#374151",
+              display: "none",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "background 0.15s, border-color 0.15s",
+            }}
+            className="navbar-mobile-btn"
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background =
+                "#f0fdfa";
+              (e.currentTarget as HTMLButtonElement).style.borderColor =
+                "#5eead4";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLButtonElement).style.background =
+                "transparent";
+              (e.currentTarget as HTMLButtonElement).style.borderColor =
+                "#e5e7eb";
+            }}
           >
             <svg
-              className="w-6 h-6"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              viewBox="0 0 24 24"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
                 d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
               />
             </svg>
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* MOBILE MENU */}
         {isOpen && (
-          <div className="md:hidden pb-4 space-y-2 backdrop-blur-sm bg-white/10 rounded-lg p-4 border border-gray-300">
-            <Link 
-              href="/" 
-              className="block px-4 py-2 rounded-lg transition-all duration-300 font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-900"
-              onClick={() => setIsOpen(false)}
+          <div
+            style={{
+              paddingBottom: "12px",
+              borderTop: "1px solid #f0fdfa",
+            }}
+          >
+            <div
+              style={{
+                background: "#f0fdfa",
+                border: "1px solid #ccfbf1",
+                borderRadius: "14px",
+                padding: "10px",
+                marginTop: "8px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "4px",
+              }}
             >
-              Home
-            </Link>
-            <Link 
-              href="/about" 
-              className="block px-4 py-2 rounded-lg transition-all duration-300 font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-900"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
-            <Link 
-              href="/services" 
-              className="block px-4 py-2 rounded-lg transition-all duration-300 font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-900"
-              onClick={() => setIsOpen(false)}
-            >
-              Services
-            </Link>
-            <Link 
-              href="/learn-more" 
-              className="block px-4 py-2 rounded-lg transition-all duration-300 font-medium text-white bg-blue-900 hover:bg-blue-800"
-              onClick={() => setIsOpen(false)}
-            >
-              Learn More
-            </Link>
+              {[
+                ["/", "Home"],
+                ["/about", "About"],
+                ["/services", "Services"],
+              ].map(([href, label]) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setIsOpen(false)}
+                  style={{
+                    display: "block",
+                    padding: "10px 14px",
+                    borderRadius: "10px",
+                    fontWeight: 500,
+                    fontSize: "15px",
+                    color: "#374151",
+                    textDecoration: "none",
+                    transition: "background 0.15s, color 0.15s",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.background =
+                      "#ccfbf1";
+                    (e.currentTarget as HTMLAnchorElement).style.color =
+                      "#0d9488";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.background =
+                      "transparent";
+                    (e.currentTarget as HTMLAnchorElement).style.color =
+                      "#374151";
+                  }}
+                >
+                  {label}
+                </Link>
+              ))}
+              <Link
+                href="/learn-more"
+                onClick={() => setIsOpen(false)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  padding: "11px 14px",
+                  borderRadius: "10px",
+                  fontWeight: 600,
+                  fontSize: "15px",
+                  color: "#fff",
+                  textDecoration: "none",
+                  background: "linear-gradient(135deg, #0d9488, #0f766e)",
+                  marginTop: "4px",
+                }}
+              >
+                Learn More
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </Link>
+            </div>
           </div>
         )}
       </div>
+
+      {/* RESPONSIVE STYLES */}
+      <style>{`
+        @media (max-width: 768px) {
+          .navbar-desktop { display: none !important; }
+          .navbar-mobile-btn { display: flex !important; }
+        }
+      `}</style>
     </nav>
+  );
+}
+
+/* ─── NAV LINK ─── */
+
+function NavLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      style={{
+        padding: "8px 14px",
+        borderRadius: "10px",
+        fontWeight: 500,
+        fontSize: "14.5px",
+        color: "#374151",
+        textDecoration: "none",
+        transition: "background 0.15s, color 0.15s",
+      }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLAnchorElement).style.background = "#f0fdfa";
+        (e.currentTarget as HTMLAnchorElement).style.color = "#0d9488";
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+        (e.currentTarget as HTMLAnchorElement).style.color = "#374151";
+      }}
+    >
+      {children}
+    </Link>
   );
 }
