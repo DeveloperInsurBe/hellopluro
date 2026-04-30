@@ -69,8 +69,8 @@ export default function Navbar() {
             style={{ display: "flex", alignItems: "center", gap: "4px" }}
             className="navbar-desktop"
           >
-            {(["/", "/services", "/about"] as const).map((href, i) => {
-              const labels = ["Home", "Services", "About"];
+            {(["/", "/services",  "/partners", "/about"] as const).map((href, i) => {
+              const labels = ["Home", "Services", "Partners", "About"];
               return (
                 <NavLink key={href} href={href}>
                   {labels[i]}
@@ -192,8 +192,9 @@ export default function Navbar() {
             >
               {[
                 ["/", "Home"],
-                ["/about", "About"],
                 ["/services", "Services"],
+                ["/partners", "Partners"],
+                ["/about", "About"],
               ].map(([href, label]) => (
                 <Link
                   key={href}

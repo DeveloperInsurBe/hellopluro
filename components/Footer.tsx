@@ -31,6 +31,7 @@ export default function Footer() {
           Imprint
         </Link>
       </div>
+      
     </footer>
   );
 }
