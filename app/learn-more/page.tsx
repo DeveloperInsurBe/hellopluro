@@ -31,7 +31,7 @@ export default function LearnMore() {
             variants={fadeUp}
             className="text-4xl md:text-6xl font-bold text-[#0b2c6b]"
           >
-            Learn More About <span className="text-teal-600">Pluro</span>
+            Learn More About <span className="text-primary">Pluro</span>
           </motion.h1>
 
           <motion.p
@@ -207,7 +207,7 @@ export default function LearnMore() {
           whileInView={{ scale: 1, opacity: 1 }}
           className="mt-10 inline-block bg-white px-8 py-4 rounded-2xl shadow-md"
         >
-          <span className="text-teal-600 font-semibold text-lg">
+          <span className="text-primary font-semibold text-lg">
             Launching in 2026 🚀
           </span>
         </motion.div>

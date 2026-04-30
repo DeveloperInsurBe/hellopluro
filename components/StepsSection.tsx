@@ -79,11 +79,11 @@ export default function StepsSection() {
             variants={fadeUp}
             className="mt-6 flex items-center justify-center gap-6"
           >
-            <button className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg text-sm">
+            <button className="bg-primary hover:hover:bg-primary-dark  text-white px-5 py-2 rounded-lg text-sm">
               Get Pluro Plus Package
             </button>
 
-            <button className="text-teal-600 text-sm font-medium">
+            <button className="text-primary text-sm font-medium">
               Learn More →
             </button>
           </motion.div>
@@ -138,7 +138,7 @@ export default function StepsSection() {
                     {/* LINE */}
                     <div
                       className={`w-[2px] transition-all ${
-                        isActive ? "bg-teal-600" : "bg-gray-200"
+                        isActive ? "bg-primary" : "bg-gray-200"
                       }`}
                     />
 

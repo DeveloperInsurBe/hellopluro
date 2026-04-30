@@ -81,7 +81,7 @@ export default function BlockedAccountSection() {
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   transition={{ duration: 0.3 }}
-                  className="text-teal-600 mt-1"
+                  className="text-primary mt-1"
                 >
                   {item.icon}
                 </motion.div>
@@ -99,14 +99,14 @@ export default function BlockedAccountSection() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}
-              className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-xl shadow-md transition"
+              className="bg-primary hover:hover:bg-primary-dark  text-white px-6 py-3 rounded-xl shadow-md transition"
             >
               Get Pluro Plus Package
             </motion.button>
 
             <motion.button
               whileHover={{ x: 4 }}
-              className="text-teal-600 font-medium flex items-center gap-1"
+              className="text-primary font-medium flex items-center gap-1"
             >
               Learn More About Pluro →
             </motion.button>

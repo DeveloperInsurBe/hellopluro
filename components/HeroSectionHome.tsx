@@ -45,7 +45,7 @@ export default function HeroSectionHome() {
             className="mt-6 text-gray-600 text-lg max-w-lg"
           >
             Get your blocked account and health insurance from one trusted
-            source. <span className="font-semibold text-teal-600">Pluro</span>{" "}
+            source. <span className="font-semibold text-primary">Pluro</span>{" "}
             simplifies your entire visa process — fast, secure, and officially
             approved for your study in Germany.
           </motion.p>
@@ -54,7 +54,7 @@ export default function HeroSectionHome() {
             variants={item}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.96 }}
-            className="mt-8 bg-teal-600 hover:bg-teal-700 text-white px-6 py-4 rounded-xl shadow-md transition"
+            className="mt-8 bg-primary hover:hover:bg-primary-dark  text-white px-6 py-4 rounded-xl shadow-md transition"
           >
             Health Insurance & Blocked Account
           </motion.button>

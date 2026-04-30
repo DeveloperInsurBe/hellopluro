@@ -29,7 +29,7 @@ export default function ImprintPage() {
               Email:{" "}
               <a
                 href="mailto:enquiries@insurbe.com"
-                className="text-teal-600 hover:underline"
+                className="text-primary hover:underline"
               >
                 enquiries@insurbe.com
               </a>
@@ -81,7 +81,7 @@ export default function ImprintPage() {
               <a
                 href="https://www.vermittlerregister.info"
                 target="_blank"
-                className="text-teal-600 hover:underline"
+                className="text-primary hover:underline"
               >
                 www.vermittlerregister.info
               </a>
@@ -107,7 +107,7 @@ export default function ImprintPage() {
               <a
                 href="https://www.gesetze-im-internet.de"
                 target="_blank"
-                className="text-teal-600 hover:underline"
+                className="text-primary hover:underline"
               >
                 www.gesetze-im-internet.de
               </a>
@@ -126,7 +126,7 @@ export default function ImprintPage() {
               <a
                 href="https://www.versicherungsombudsmann.de"
                 target="_blank"
-                className="text-teal-600 hover:underline"
+                className="text-primary hover:underline"
               >
                 www.versicherungsombudsmann.de
               </a>
@@ -138,7 +138,7 @@ export default function ImprintPage() {
             <a
               href="https://www.pkv-ombudsmann.de"
               target="_blank"
-              className="text-teal-600 hover:underline"
+              className="text-primary hover:underline"
             >
               www.pkv-ombudsmann.de
             </a>
@@ -152,7 +152,7 @@ export default function ImprintPage() {
               <a
                 href="http://ec.europa.eu/consumers/odr/"
                 target="_blank"
-                className="text-teal-600 hover:underline"
+                className="text-primary hover:underline"
               >
                 ec.europa.eu/consumers/odr/
               </a>

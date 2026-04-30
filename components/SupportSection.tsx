@@ -32,7 +32,7 @@ export default function SupportSection() {
 
   return (
     <>
-      <section className="w-full bg-[#1f7f8a] py-16 md:py-24">
+      <section className="w-full bg-primary/60 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           {/* 🔥 LEFT CONTENT */}
           <motion.div
@@ -93,7 +93,7 @@ export default function SupportSection() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => setOpenModal(true)}
-                className="bg-white text-[#1f7f8a] px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-lg transition"
+                className="bg-white text-[#385ae4] px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-lg transition"
               >
                 Contact Us
               </motion.button>

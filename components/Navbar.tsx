@@ -17,7 +17,7 @@ export default function Navbar() {
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         borderBottom: "1px solid #e5e7eb",
-        boxShadow: "0 1px 16px rgba(13,148,136,0.07)",
+        boxShadow: "0 1px 16px rgba(0,0,255,0.08)",
         transition: "all 0.3s",
       }}
     >
@@ -25,7 +25,7 @@ export default function Navbar() {
       <div
         style={{
           height: "3px",
-          background: "linear-gradient(90deg, #0d9488, #14b8a6, #2dd4bf)",
+          background: "linear-gradient(90deg, #0000FF, #3333FF, #6666FF)",
           width: "100%",
         }}
       />
@@ -42,34 +42,34 @@ export default function Navbar() {
           }}
         >
           {/* LOGO */}
-       <Link
-  href="/"
-  style={{
-    textDecoration: "none",
-    display: "flex",
-    alignItems: "center",
-  }}
->
-  <Image
-    src="/Pluro_logo.png"
-    alt="Pluro"
-    width={140}
-    height={40}
-    priority
-    style={{
-      height: "140px",
-      width: "auto",
-      objectFit: "contain",
-    }}
-  />
-</Link>
+          <Link
+            href="/"
+            style={{
+              textDecoration: "none",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Image
+              src="/Pluro_Logo_Blue.png"
+              alt="Pluro"
+              width={140}
+              height={40}
+              priority
+              style={{
+                height: "140px",
+                width: "auto",
+                objectFit: "contain",
+              }}
+            />
+          </Link>
 
           {/* DESKTOP MENU */}
           <div
             style={{ display: "flex", alignItems: "center", gap: "4px" }}
             className="navbar-desktop"
           >
-            {(["/",  "/services", "/about"] as const).map((href, i) => {
+            {(["/", "/services", "/about"] as const).map((href, i) => {
               const labels = ["Home", "Services", "About"];
               return (
                 <NavLink key={href} href={href}>
@@ -85,7 +85,7 @@ export default function Navbar() {
                 marginLeft: "8px",
                 padding: "9px 20px",
                 borderRadius: "12px",
-                background: "linear-gradient(135deg, #0d9488, #0f766e)",
+                background: "linear-gradient(135deg, #0000FF, #0000cc)",
                 color: "#fff",
                 fontWeight: 600,
                 fontSize: "14.5px",
@@ -142,9 +142,9 @@ export default function Navbar() {
             className="navbar-mobile-btn"
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLButtonElement).style.background =
-                "#f0fdfa";
+                "#e6e6ff";
               (e.currentTarget as HTMLButtonElement).style.borderColor =
-                "#5eead4";
+                "#9999ff";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLButtonElement).style.background =
@@ -175,13 +175,13 @@ export default function Navbar() {
           <div
             style={{
               paddingBottom: "12px",
-              borderTop: "1px solid #f0fdfa",
+              borderTop: "1px solid #e6e6ff",
             }}
           >
             <div
               style={{
-                background: "#f0fdfa",
-                border: "1px solid #ccfbf1",
+                background: "#f0f4ff",
+                border: "1px solid #d6dcff",
                 borderRadius: "14px",
                 padding: "10px",
                 marginTop: "8px",
@@ -211,9 +211,9 @@ export default function Navbar() {
                   }}
                   onMouseEnter={(e) => {
                     (e.currentTarget as HTMLAnchorElement).style.background =
-                      "#ccfbf1";
+                      "#e6e6ff";
                     (e.currentTarget as HTMLAnchorElement).style.color =
-                      "#0d9488";
+                      "#0000FF";
                   }}
                   onMouseLeave={(e) => {
                     (e.currentTarget as HTMLAnchorElement).style.background =
@@ -239,7 +239,7 @@ export default function Navbar() {
                   fontSize: "15px",
                   color: "#fff",
                   textDecoration: "none",
-                  background: "linear-gradient(135deg, #0d9488, #0f766e)",
+                  background: "linear-gradient(135deg, #0000FF, #0000cc)",
                   marginTop: "4px",
                 }}
               >
@@ -296,8 +296,8 @@ function NavLink({
         transition: "background 0.15s, color 0.15s",
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLAnchorElement).style.background = "#f0fdfa";
-        (e.currentTarget as HTMLAnchorElement).style.color = "#0d9488";
+        (e.currentTarget as HTMLAnchorElement).style.background = "#e6e6ff";
+        (e.currentTarget as HTMLAnchorElement).style.color = "#0000FF";
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLAnchorElement).style.background = "transparent";

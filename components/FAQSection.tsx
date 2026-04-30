@@ -124,7 +124,7 @@ export default function FAQSection() {
 
                     <motion.span
                       animate={{ rotate: isOpen ? 180 : 0 }}
-                      className="text-teal-600 text-xl"
+                      className="text-primary text-xl"
                     >
                       +
                     </motion.span>
@@ -168,7 +168,7 @@ export default function FAQSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.96 }}
               onClick={() => setOpenModal(true)}
-              className="mt-4 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg shadow"
+              className="mt-4 bg-primary hover:hover:bg-primary-dark  text-white px-6 py-3 rounded-lg shadow"
             >
               Contact Us
             </motion.button>

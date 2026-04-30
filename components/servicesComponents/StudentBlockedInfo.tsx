@@ -42,7 +42,7 @@ export default function StudentBlockedInfo() {
             className="text-3xl md:text-5xl font-bold text-[#0b2c6b] leading-tight"
           >
             Are you an international student who needs a{" "}
-            <span className="text-teal-600">blocked account</span> before
+            <span className="text-primary">blocked account</span> before
             starting your studies?
           </motion.h2>
 
@@ -84,7 +84,7 @@ export default function StudentBlockedInfo() {
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   transition={{ duration: 0.3 }}
-                  className="text-teal-600 font-bold"
+                  className="text-primary font-bold"
                 >
                   ✓
                 </motion.span>
@@ -98,7 +98,7 @@ export default function StudentBlockedInfo() {
             variants={fadeUp}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.96 }}
-            className="mt-8 bg-teal-600 hover:bg-teal-700 text-white px-7 py-3 rounded-xl font-semibold shadow-md transition"
+            className="mt-8 bg-primary hover:hover:bg-primary-dark  text-white px-7 py-3 rounded-xl font-semibold shadow-md transition"
           >
             Open Now
           </motion.button>

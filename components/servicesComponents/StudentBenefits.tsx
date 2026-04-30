@@ -45,7 +45,7 @@ const fadeUp: Variants = {
 
 export default function StudentBenefits() {
   return (
-    <section className="w-full bg-[#f5f7f6] py-16 md:py-24">
+    <section className="w-full bg-primary-light py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* 🔥 BOX CONTAINER */}
@@ -54,7 +54,7 @@ export default function StudentBenefits() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="bg-[#d9f3ea] rounded-[28px] p-8 md:p-12"
+          className="bg-white/70 rounded-[28px] p-8 md:p-12"
         >
           
           {/* 🔥 TITLE */}
@@ -65,7 +65,7 @@ export default function StudentBenefits() {
             viewport={{ once: true }}
             className="text-2xl md:text-4xl font-bold text-[#0b2c6b] mb-10"
           >
-            <span className="text-teal-600">#</span> Student{" "}
+            <span className="text-primary">#</span> Student{" "}
             <span className="font-extrabold">Benefits</span>
           </motion.h2>
 
@@ -90,7 +90,7 @@ export default function StudentBenefits() {
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   transition={{ duration: 0.3 }}
-                  className="text-teal-600 text-xl mt-1"
+                  className="text-primary text-xl mt-1"
                 >
                   ✓
                 </motion.div>

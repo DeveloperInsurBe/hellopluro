@@ -61,7 +61,7 @@ export default function DashboardFeaturesSection() {
   }, []);
 
   return (
-    <section className="w-full bg-[#e0f5eb] py-20 md:py-28">
+    <section className="w-full bg-primary-light py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6">
         {/* 🔥 HEADING */}
         <motion.h2
@@ -104,7 +104,7 @@ export default function DashboardFeaturesSection() {
                     className={`text-xl md:text-2xl transition-all ${
                       isActive
                         ? "font-bold text-[#0b2c6b]"
-                        : "text-[#0b2c6b]/60"
+                        : "text-[#0b2c6b]"
                     }`}
                   >
                     {item.title}

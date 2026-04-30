@@ -36,7 +36,7 @@ export default function About() {
             variants={fadeUp}
             className="text-4xl md:text-6xl font-bold text-[#0b2c6b] leading-tight"
           >
-            About <span className="text-teal-600">Pluro</span>
+            About <span className="text-primary">Pluro</span>
           </motion.h1>
 
           <motion.p
@@ -201,7 +201,7 @@ export default function About() {
           viewport={{ once: true }}
           className="mt-10 bg-white rounded-2xl p-6 shadow-md inline-block"
         >
-          <span className="text-lg font-semibold text-teal-600">
+          <span className="text-lg font-semibold text-primary">
             Launching in 2026 🚀
           </span>
         </motion.div>

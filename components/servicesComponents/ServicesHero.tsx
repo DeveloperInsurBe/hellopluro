@@ -27,14 +27,14 @@ const fadeUp: Variants = {
 
 export default function ServicesHero() {
   return (
-    <section className="w-full bg-[#e0f5eb] overflow-hidden">
+    <section className="w-full bg-primary-light overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 py-20 md:py-16 grid lg:grid-cols-2 gap-10 items-center">
         {/* 🔥 LEFT CONTENT */}
         <motion.div variants={container} initial="hidden" animate="show">
           {/* TOP TEXT */}
           <motion.p
             variants={fadeUp}
-            className="text-teal-600 text-lg md:text-xl font-semibold mb-4"
+            className="text-primary text-lg md:text-xl font-semibold mb-4"
           >
             Fast • Fully Digital • Best Value
           </motion.p>
@@ -61,7 +61,7 @@ export default function ServicesHero() {
             variants={fadeUp}
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-8 bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-2xl font-semibold shadow-md transition"
+            className="mt-8 bg-primary hover:hover:bg-primary-dark  text-white px-8 py-4 rounded-2xl font-semibold shadow-md transition"
           >
             Open Now
           </motion.button>

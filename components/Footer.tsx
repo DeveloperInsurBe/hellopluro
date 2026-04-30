@@ -13,7 +13,7 @@ export default function Footer() {
         {/* LOGO */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/Pluro_logo.png"
+            src="/Pluro_Logo_Blue.png"
             alt="Pluro"
             width={120}
             height={32}
@@ -29,7 +29,7 @@ export default function Footer() {
         {/* LINK */}
         <Link
           href="/imprint"
-          className="text-sm text-gray-600 hover:text-teal-600 transition"
+          className="text-sm text-gray-600 hover:text-primary transition"
         >
           Imprint
         </Link>

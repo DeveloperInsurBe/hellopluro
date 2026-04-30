@@ -49,7 +49,7 @@ const fadeUp: Variants = {
 
 export default function ServicesFeatures() {
   return (
-    <section className="w-full bg-[#effbf5] py-16 md:py-24">
+    <section className="w-full bg-primary-light py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* 🔥 HEADING */}
@@ -60,7 +60,7 @@ export default function ServicesFeatures() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center text-3xl md:text-5xl font-bold text-[#0b2c6b] leading-tight"
         >
-          Open your <span className="text-teal-600">German Blocked</span>{" "}
+          Open your <span className="text-primary">German Blocked</span>{" "}
           Account online
         </motion.h2>
 
@@ -84,7 +84,7 @@ export default function ServicesFeatures() {
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.3 }}
-                className="min-w-[60px] h-[60px] flex items-center justify-center rounded-2xl border-2 border-teal-500 text-2xl"
+                className="min-w-[60px] h-[60px] flex items-center justify-center rounded-2xl border-2 border-primary text-2xl"
               >
                 {item.icon}
               </motion.div>
