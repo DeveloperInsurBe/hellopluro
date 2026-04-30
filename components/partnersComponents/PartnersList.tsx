@@ -56,14 +56,7 @@ const partners = [
     features: ["Travel insurance", "Liability coverage", "Short-term stays"],
     color: "from-violet-500 to-purple-600",
   },
-  {
-    name: "CANNYWINGS",
-    logo: "/partners_assets/canny.webp",
-    desc: "Cannywings offers private health insurance tailored to students and professionals relocating to Germany, powered by ERGO.",
-    members: "Students & Professionals",
-    features: ["Student-focused", "Relocation support", "Powered by ERGO"],
-    color: "from-pink-500 to-rose-600",
-  },
+  
 ];
 
 export default function PartnersList() {
