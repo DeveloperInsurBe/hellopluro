@@ -30,7 +30,6 @@ export default function BlockedAccountSection() {
   return (
     <section className="w-full bg-[#f5f7f6] py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-
         {/* LEFT CONTENT */}
         <motion.div
           variants={container}
@@ -58,7 +57,6 @@ export default function BlockedAccountSection() {
 
           {/* BULLETS */}
           <motion.div variants={container} className="mt-8 space-y-4">
-
             {[
               {
                 icon: <CheckCircle size={20} />,
@@ -91,7 +89,6 @@ export default function BlockedAccountSection() {
                 <p className="text-gray-700">{item.text}</p>
               </motion.div>
             ))}
-
           </motion.div>
 
           {/* BUTTONS */}
@@ -128,10 +125,10 @@ export default function BlockedAccountSection() {
             src="/images_assets/students6.jpg"
             alt="students"
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
           />
         </motion.div>
-
       </div>
     </section>
   );

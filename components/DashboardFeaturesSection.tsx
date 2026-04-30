@@ -22,8 +22,7 @@ const features = [
   {
     id: 2,
     title: "Stay organized",
-    description:
-      "Get notified about tasks and manage everything in one place.",
+    description: "Get notified about tasks and manage everything in one place.",
     image: "/images_assets/dashboard2.png",
   },
 ];
@@ -64,7 +63,6 @@ export default function DashboardFeaturesSection() {
   return (
     <section className="w-full bg-[#e0f5eb] py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-6">
-
         {/* 🔥 HEADING */}
         <motion.h2
           variants={fadeUp}
@@ -73,14 +71,11 @@ export default function DashboardFeaturesSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-3xl md:text-5xl font-bold mb-16 leading-tight"
         >
-          <span className="text-[#0b2c6b] font-extrabold">
-            1 Dashboard
-          </span>{" "}
+          <span className="text-[#0b2c6b] font-extrabold">1 Dashboard</span>{" "}
           <span className="text-[#0b2c6b]/70">, many functions</span>
         </motion.h2>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-
           {/* LEFT SIDE */}
           <motion.div
             variants={container}
@@ -136,7 +131,7 @@ export default function DashboardFeaturesSection() {
               initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full h-[340px] md:h-[520px] flex items-center justify-center"
+              className="relative w-full h-[340px] md:h-[420px] flex items-center justify-center"
             >
               {/* FRAME */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/40 to-white/10 backdrop-blur-xl border border-white/30 shadow-[0_20px_60px_rgba(0,0,0,0.15)]" />
@@ -146,13 +141,13 @@ export default function DashboardFeaturesSection() {
                 <Image
                   src={features[active].image}
                   alt="dashboard"
-                  fill
-                  className="object-contain"
+                  width={900}
+                  height={600}
+                  className="max-h-full w-auto object-contain"
                 />
               </div>
             </motion.div>
           </motion.div>
-
         </div>
       </div>
     </section>

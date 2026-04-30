@@ -29,13 +29,8 @@ export default function ServicesHero() {
   return (
     <section className="w-full bg-[#e0f5eb] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 py-20 md:py-16 grid lg:grid-cols-2 gap-10 items-center">
-
         {/* 🔥 LEFT CONTENT */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-        >
+        <motion.div variants={container} initial="hidden" animate="show">
           {/* TOP TEXT */}
           <motion.p
             variants={fadeUp}
@@ -90,18 +85,18 @@ export default function ServicesHero() {
           <motion.div
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="relative w-full h-full"
+            className="w-full h-[350px] md:h-[500px] flex items-center justify-end"
           >
             <Image
               src="/images_assets/servicehero.png"
               alt="Student"
-              fill
+              width={600}
+              height={500}
               priority
-              className="object-contain object-right"
+              className="h-full w-auto object-contain"
             />
           </motion.div>
         </motion.div>
-
       </div>
     </section>
   );

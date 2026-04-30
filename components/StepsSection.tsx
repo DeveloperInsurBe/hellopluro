@@ -53,7 +53,6 @@ export default function StepsSection() {
   return (
     <section className="w-full bg-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
-
         {/* 🔥 HEADING (SCROLL ANIMATED) */}
         <motion.div
           variants={container}
@@ -92,7 +91,6 @@ export default function StepsSection() {
 
         {/* CONTENT */}
         <div className="mt-16 grid lg:grid-cols-2 gap-12 items-center">
-
           {/* LEFT IMAGE (ANIMATED ON STEP CHANGE) */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -106,17 +104,17 @@ export default function StepsSection() {
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
-              className="w-full h-full"
+              className="relative w-full h-full" // ✅ ADD THIS
             >
               <Image
                 src={steps[activeStep].image}
                 alt="step"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </motion.div>
           </motion.div>
-
           {/* RIGHT STEPS */}
           <motion.div
             variants={container}
@@ -137,7 +135,6 @@ export default function StepsSection() {
                   className="cursor-pointer"
                 >
                   <div className="flex gap-6">
-
                     {/* LINE */}
                     <div
                       className={`w-[2px] transition-all ${
@@ -149,9 +146,7 @@ export default function StepsSection() {
                     <div>
                       <h3
                         className={`text-xl md:text-2xl font-semibold transition ${
-                          isActive
-                            ? "text-gray-900"
-                            : "text-gray-500"
+                          isActive ? "text-gray-900" : "text-gray-500"
                         }`}
                       >
                         {step.title}
@@ -161,13 +156,11 @@ export default function StepsSection() {
                         {step.description}
                       </p>
                     </div>
-
                   </div>
                 </motion.div>
               );
             })}
           </motion.div>
-
         </div>
       </div>
     </section>

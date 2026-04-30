@@ -34,7 +34,6 @@ export default function SupportSection() {
     <>
       <section className="w-full bg-[#1f7f8a] py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-
           {/* 🔥 LEFT CONTENT */}
           <motion.div
             variants={container}
@@ -62,7 +61,6 @@ export default function SupportSection() {
 
             {/* FEATURES */}
             <motion.div variants={container} className="mt-8 space-y-4">
-
               {[
                 "Available in multiple languages including English, German, Arabic, and more",
                 "Reach us via phone or email anytime",
@@ -87,7 +85,6 @@ export default function SupportSection() {
                   <p className="text-white/90">{text}</p>
                 </motion.div>
               ))}
-
             </motion.div>
 
             {/* BUTTON */}
@@ -116,19 +113,16 @@ export default function SupportSection() {
                 src="/images_assets/student6.jpg"
                 alt="support"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
           </motion.div>
-
         </div>
       </section>
 
       {/* 🔥 MODAL */}
-      <ContactModal
-        isOpen={openModal}
-        onClose={() => setOpenModal(false)}
-      />
+      <ContactModal isOpen={openModal} onClose={() => setOpenModal(false)} />
     </>
   );
 }

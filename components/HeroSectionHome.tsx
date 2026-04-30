@@ -31,13 +31,8 @@ export default function HeroSectionHome() {
   return (
     <section className="w-full bg-white py-20 md:py-0 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-
         {/* LEFT CONTENT */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-        >
+        <motion.div variants={container} initial="hidden" animate="show">
           <motion.h1
             variants={item}
             className="text-4xl md:text-6xl font-bold text-gray-800 leading-tight"
@@ -50,8 +45,7 @@ export default function HeroSectionHome() {
             className="mt-6 text-gray-600 text-lg max-w-lg"
           >
             Get your blocked account and health insurance from one trusted
-            source.{" "}
-            <span className="font-semibold text-teal-600">Pluro</span>{" "}
+            source. <span className="font-semibold text-teal-600">Pluro</span>{" "}
             simplifies your entire visa process — fast, secure, and officially
             approved for your study in Germany.
           </motion.p>
@@ -68,7 +62,6 @@ export default function HeroSectionHome() {
 
         {/* RIGHT SIDE IMAGES */}
         <div className="relative h-[500px] md:h-[600px] overflow-hidden">
-
           {/* FLOAT WRAPPER */}
           <motion.div
             animate={{ y: [0, -10, 0] }}
@@ -93,14 +86,23 @@ export default function HeroSectionHome() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="relative w-full h-[200px] md:h-[240px] rounded-2xl overflow-hidden shadow-lg"
+                  className="w-full h-[200px] md:h-[240px] rounded-2xl overflow-hidden shadow-lg"
                 >
-                  <Image
-                    src={src}
-                    alt="hero"
-                    fill
-                    className="object-cover"
-                  />
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="relative w-full h-[200px] md:h-[240px] rounded-2xl overflow-hidden shadow-lg"
+                  >
+                    <Image
+                      src={src}
+                      alt="hero"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </motion.div>
                 </motion.div>
               ))}
             </motion.div>
@@ -109,7 +111,6 @@ export default function HeroSectionHome() {
           {/* OPTIONAL GLOW EFFECT */}
           <div className="absolute -bottom-20 -right-20 w-[300px] h-[300px] bg-teal-200/30 blur-3xl rounded-full" />
         </div>
-
       </div>
     </section>
   );

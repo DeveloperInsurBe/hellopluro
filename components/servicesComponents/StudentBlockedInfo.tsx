@@ -29,7 +29,6 @@ export default function StudentBlockedInfo() {
   return (
     <section className="w-full bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 grid lg:grid-cols-2 gap-12 items-center">
-
         {/* 🔥 LEFT CONTENT */}
         <motion.div
           variants={container}
@@ -43,8 +42,8 @@ export default function StudentBlockedInfo() {
             className="text-3xl md:text-5xl font-bold text-[#0b2c6b] leading-tight"
           >
             Are you an international student who needs a{" "}
-            <span className="text-teal-600">blocked account</span>{" "}
-            before starting your studies?
+            <span className="text-teal-600">blocked account</span> before
+            starting your studies?
           </motion.h2>
 
           {/* DESCRIPTION */}
@@ -52,8 +51,9 @@ export default function StudentBlockedInfo() {
             variants={fadeUp}
             className="mt-6 text-gray-600 leading-relaxed max-w-xl text-sm md:text-base"
           >
-            The required monthly amount is regulated by German authorities.
-            The total depends on your duration of stay, and you can easily extend it later.
+            The required monthly amount is regulated by German authorities. The
+            total depends on your duration of stay, and you can easily extend it
+            later.
           </motion.p>
 
           {/* SUBTITLE */}
@@ -123,18 +123,18 @@ export default function StudentBlockedInfo() {
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="relative w-full h-full"
+            className="w-full h-[350px] md:h-[500px] flex items-end justify-center"
           >
             <Image
               src="/images_assets/students1.jpg"
               alt="Student"
-              fill
+              width={600}
+              height={500}
               priority
-              className="object-contain object-bottom"
+              className="h-full w-auto object-contain rounded-2xl shadow-lg"
             />
           </motion.div>
         </motion.div>
-
       </div>
     </section>
   );

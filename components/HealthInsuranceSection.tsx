@@ -29,7 +29,6 @@ export default function HealthInsuranceSection() {
   return (
     <section className="w-full bg-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-
         {/* 🔥 LEFT IMAGE */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
@@ -42,6 +41,7 @@ export default function HealthInsuranceSection() {
             src="/images_assets/student11.jpg"
             alt="health insurance"
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
           />
         </motion.div>
@@ -73,7 +73,6 @@ export default function HealthInsuranceSection() {
 
           {/* BULLETS */}
           <motion.div variants={container} className="mt-8 space-y-4">
-
             {[
               "Complete coverage designed for peace of mind",
               "Fast and simple application process",
@@ -102,7 +101,6 @@ export default function HealthInsuranceSection() {
                 <p className="text-gray-700">{text}</p>
               </motion.div>
             ))}
-
           </motion.div>
 
           {/* BUTTONS */}
@@ -125,9 +123,7 @@ export default function HealthInsuranceSection() {
               Learn More About Pluro →
             </motion.button>
           </motion.div>
-
         </motion.div>
-
       </div>
     </section>
   );

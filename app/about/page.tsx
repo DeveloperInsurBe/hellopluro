@@ -23,10 +23,8 @@ const fadeUp: Variants = {
 export default function About() {
   return (
     <div className="bg-white">
-
       {/* HERO */}
       <section className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
-        
         {/* LEFT */}
         <motion.div
           variants={container}
@@ -45,17 +43,15 @@ export default function About() {
             variants={fadeUp}
             className="mt-6 text-gray-700 text-lg max-w-lg"
           >
-            Pluro is built to simplify one of the most stressful parts of studying
-            abroad — your visa process. From blocked accounts to health insurance,
-            we bring everything together in one seamless platform.
+            Pluro is built to simplify one of the most stressful parts of
+            studying abroad — your visa process. From blocked accounts to health
+            insurance, we bring everything together in one seamless platform.
           </motion.p>
 
-          <motion.p
-            variants={fadeUp}
-            className="mt-4 text-gray-600 max-w-lg"
-          >
+          <motion.p variants={fadeUp} className="mt-4 text-gray-600 max-w-lg">
             Our goal is to remove complexity, reduce delays, and give students a
-            clear, reliable path to starting their journey in Germany with confidence.
+            clear, reliable path to starting their journey in Germany with
+            confidence.
           </motion.p>
         </motion.div>
 
@@ -65,13 +61,14 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative h-[300px] md:h-[450px] rounded-3xl overflow-hidden shadow-xl"
+          className="relative rounded-3xl overflow-hidden shadow-xl"
         >
           <Image
             src="/images_assets/students4.jpg"
             alt="about"
-            fill
-            className="object-cover"
+            width={800}
+            height={500}
+            className="w-full h-auto object-cover"
           />
         </motion.div>
       </section>
@@ -126,20 +123,20 @@ export default function About() {
 
       {/* IMAGE + TEXT */}
       <section className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
-        
         {/* IMAGE */}
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative h-[300px] md:h-[450px] rounded-3xl overflow-hidden shadow-xl"
+          className="relative rounded-3xl overflow-hidden shadow-xl"
         >
           <Image
             src="/images_assets/students.jpg"
             alt="team"
-            fill
-            className="object-cover"
+            width={800}
+            height={500}
+            className="w-full h-auto object-cover"
           />
         </motion.div>
 
@@ -162,14 +159,11 @@ export default function About() {
             className="mt-6 text-gray-700 leading-relaxed"
           >
             We combine global financial experience with deep knowledge of German
-            regulations. This allows us to deliver solutions that are both reliable
-            and perfectly aligned with visa requirements.
+            regulations. This allows us to deliver solutions that are both
+            reliable and perfectly aligned with visa requirements.
           </motion.p>
 
-          <motion.p
-            variants={fadeUp}
-            className="mt-4 text-gray-600"
-          >
+          <motion.p variants={fadeUp} className="mt-4 text-gray-600">
             Our platform is continuously evolving to provide faster processes,
             better support, and a smoother experience for every student.
           </motion.p>
@@ -196,7 +190,8 @@ export default function About() {
           className="text-gray-600 max-w-2xl mx-auto"
         >
           Pluro is building a next-generation platform to support international
-          students moving to Germany — combining speed, clarity, and trust in one place.
+          students moving to Germany — combining speed, clarity, and trust in
+          one place.
         </motion.p>
 
         <motion.div
@@ -211,7 +206,6 @@ export default function About() {
           </span>
         </motion.div>
       </section>
-
     </div>
   );
 }
