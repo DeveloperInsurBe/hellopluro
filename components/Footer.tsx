@@ -6,10 +6,8 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="w-full bg-[#f8faf9] border-t border-gray-200 mt-20">
-      
       {/* TOP ROW */}
       <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        
         {/* LOGO */}
         <Link href="/" className="flex items-center">
           <Image
@@ -21,9 +19,8 @@ export default function Footer() {
           />
         </Link>
 
-        {/* COPYRIGHT */}
         <p className="text-sm text-gray-600 text-center">
-          © 2026 INSURBE GmbH. All Rights Reserved.
+          © 2026 PLURO, a brand of INSURBE GmbH – All rights reserved.
         </p>
 
         {/* LINK */}
@@ -34,8 +31,6 @@ export default function Footer() {
           Imprint
         </Link>
       </div>
-
-     
     </footer>
   );
 }
