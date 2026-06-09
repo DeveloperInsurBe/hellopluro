@@ -2,10 +2,56 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isInsuranceMenuOpen, setIsInsuranceMenuOpen] = useState(false);
+  const insuranceMenuRef = useRef<HTMLDivElement | null>(null);
+  const closeInsuranceMenuTimeout = useRef<ReturnType<typeof setTimeout> | null>(
+    null
+  );
+
+  const clearInsuranceMenuCloseTimeout = () => {
+    if (closeInsuranceMenuTimeout.current) {
+      clearTimeout(closeInsuranceMenuTimeout.current);
+      closeInsuranceMenuTimeout.current = null;
+    }
+  };
+
+  const openInsuranceMenu = () => {
+    clearInsuranceMenuCloseTimeout();
+    setIsInsuranceMenuOpen(true);
+  };
+
+  const closeInsuranceMenuWithDelay = () => {
+    clearInsuranceMenuCloseTimeout();
+    closeInsuranceMenuTimeout.current = setTimeout(() => {
+      setIsInsuranceMenuOpen(false);
+    }, 140);
+  };
+
+  const closeInsuranceMenuNow = () => {
+    clearInsuranceMenuCloseTimeout();
+    setIsInsuranceMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        insuranceMenuRef.current &&
+        !insuranceMenuRef.current.contains(event.target as Node)
+      ) {
+        closeInsuranceMenuNow();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      clearInsuranceMenuCloseTimeout();
+    };
+  }, []);
 
   return (
     <nav
@@ -69,8 +115,138 @@ export default function Navbar() {
             style={{ display: "flex", alignItems: "center", gap: "4px" }}
             className="navbar-desktop"
           >
-            {(["/", "/services",  "/partners", "/about"] as const).map((href, i) => {
-              const labels = ["Home", "Services", "Partners", "About"];
+            {(["/"] as const).map((href, i) => {
+              const labels = ["Home"];
+              return (
+                <NavLink key={href} href={href}>
+                  {labels[i]}
+                </NavLink>
+              );
+            })}
+            <div
+              ref={insuranceMenuRef}
+              style={{ position: "relative" }}
+              onMouseEnter={openInsuranceMenu}
+              onMouseLeave={closeInsuranceMenuWithDelay}
+            >
+              <button
+                type="button"
+                style={{
+                  padding: "8px 14px",
+                  borderRadius: "10px",
+                  fontWeight: 500,
+                  fontSize: "14.5px",
+                  color: "#374151",
+                  textDecoration: "none",
+                  transition: "background 0.15s, color 0.15s",
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  if (isInsuranceMenuOpen) {
+                    closeInsuranceMenuNow();
+                    return;
+                  }
+                  openInsuranceMenu();
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background =
+                    "#e6e6ff";
+                  (e.currentTarget as HTMLButtonElement).style.color =
+                    "#0000FF";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLButtonElement).style.background =
+                    "transparent";
+                  (e.currentTarget as HTMLButtonElement).style.color =
+                    "#374151";
+                }}
+              >
+                Insurance For Visa
+              </button>
+              {isInsuranceMenuOpen && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "100%",
+                    left: 0,
+                    minWidth: "230px",
+                    background: "#fff",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "12px",
+                    boxShadow: "0 8px 20px rgba(15, 23, 42, 0.12)",
+                    padding: "6px",
+                    marginTop: "8px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "2px",
+                    zIndex: 60,
+                  }}
+                  onMouseEnter={openInsuranceMenu}
+                  onMouseLeave={closeInsuranceMenuWithDelay}
+                >
+                  <Link
+                    href="#"
+                    style={{
+                      display: "block",
+                      padding: "10px 12px",
+                      borderRadius: "8px",
+                      color: "#374151",
+                      textDecoration: "none",
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      transition: "background 0.15s, color 0.15s",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.background =
+                        "#e6e6ff";
+                      (e.currentTarget as HTMLAnchorElement).style.color =
+                        "#0000FF";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.background =
+                        "transparent";
+                      (e.currentTarget as HTMLAnchorElement).style.color =
+                        "#374151";
+                    }}
+                    onClick={closeInsuranceMenuNow}
+                  >
+                    Private Health insurance
+                  </Link>
+                  <Link
+                    href="/statutory-health-insurance"
+                    style={{
+                      display: "block",
+                      padding: "10px 12px",
+                      borderRadius: "8px",
+                      color: "#374151",
+                      textDecoration: "none",
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      transition: "background 0.15s, color 0.15s",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.background =
+                        "#e6e6ff";
+                      (e.currentTarget as HTMLAnchorElement).style.color =
+                        "#0000FF";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.background =
+                        "transparent";
+                      (e.currentTarget as HTMLAnchorElement).style.color =
+                        "#374151";
+                    }}
+                    onClick={closeInsuranceMenuNow}
+                  >
+                    Statutory Health insurance
+                  </Link>
+                </div>
+              )}
+            </div>
+            {(["/services", "/partners", "/about"] as const).map((href, i) => {
+              const labels = ["Services", "Partners", "About"];
               return (
                 <NavLink key={href} href={href}>
                   {labels[i]}
@@ -192,6 +368,8 @@ export default function Navbar() {
             >
               {[
                 ["/", "Home"],
+                ["#", "Private Health insurance"],
+                ["/statutory-health-insurance", "Statutory Health insurance"],
                 ["/services", "Services"],
                 ["/partners", "Partners"],
                 ["/about", "About"],
