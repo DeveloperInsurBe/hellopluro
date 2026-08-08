@@ -1,6 +1,5 @@
 "use client";
 
-import BlockedAccountCalculatorSection from "@/components/BlockedAccountCalculatorSection";
 import BlockedAccountSection from "@/components/BlockedAccountSection";
 import DashboardFeaturesSection from "@/components/DashboardFeaturesSection";
 import FAQSection from "@/components/FAQSection";
