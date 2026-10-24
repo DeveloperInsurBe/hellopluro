@@ -162,7 +162,7 @@ export default function BlockedAccountSection() {
           }`}
         >
           <div className="overflow-hidden rounded-[22px] border border-[#DCE2F3] bg-white shadow-[0_30px_60px_-30px_rgba(11,27,51,0.3),0_4px_14px_rgba(11,27,51,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_40px_70px_-30px_rgba(11,27,51,0.34),0_6px_18px_rgba(11,27,51,0.1)]">
-            <div className="flex items-center justify-between bg-gradient-to-r from-[#0B1B33] to-[#16308C] px-[26px] py-5">
+            <div className="flex items-center justify-between gap-3 bg-gradient-to-r from-[#0B1B33] to-[#16308C] px-5 py-4 sm:px-[26px] sm:py-5">
               <span className="inline-flex items-center gap-2 text-[12px] tracking-[0.05em] text-[rgba(255,255,255,0.65)]">
                 <span className="h-[7px] w-[7px] rounded-full bg-[#6EA8FE] shadow-[0_0_0_0_rgba(110,168,254,0.6)] animate-pulse" />
                 Live estimate
@@ -172,8 +172,8 @@ export default function BlockedAccountSection() {
               </span>
             </div>
 
-            <div className="px-[26px] pb-[6px] pt-[26px]">
-              <div className="grid grid-cols-[1.3fr_1fr] gap-4">
+            <div className="px-5 pb-[6px] pt-5 sm:px-[26px] sm:pt-[26px]">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1.3fr_1fr]">
                 <div>
                   <label className="mb-2 inline-flex items-center gap-[5px] text-[11px] uppercase tracking-[0.04em] text-[#8891A8]">
                     Monthly amount
@@ -225,64 +225,64 @@ export default function BlockedAccountSection() {
                 <span className="absolute -right-[10px] top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-[#EEF2FB]" />
               </div>
 
-              <div className="px-[26px] pb-[10px] pt-1">
-                <div className="flex items-center justify-between border-b border-[#EEF1FA] py-[11px]">
-                  <span className="inline-flex items-center gap-[6px] text-[14.5px] text-[#4C5C7A]">
+              <div className="px-0 pb-[10px] pt-1 sm:px-[26px]">
+                <div className="flex items-center justify-between gap-3 border-b border-[#EEF1FA] py-[11px]">
+                  <span className="inline-flex items-center gap-[6px] text-[13.5px] text-[#4C5C7A] sm:text-[14.5px]">
                     <span className="w-[14px] text-[#8891A8]">
                       =
                     </span>
                     Required blocking amount
                   </span>
-                  <span className="text-[14.5px] font-medium text-[#0B1B33]">
+                  <span className="whitespace-nowrap text-[13.5px] font-medium text-[#0B1B33] sm:text-[14.5px]">
                     EUR {fmt(required)}
                   </span>
                 </div>
-                <div className="flex items-center justify-between border-b border-[#EEF1FA] py-[11px]">
-                  <span className="inline-flex items-center gap-[6px] text-[14.5px] text-[#4C5C7A]">
+                <div className="flex items-center justify-between gap-3 border-b border-[#EEF1FA] py-[11px]">
+                  <span className="inline-flex items-center gap-[6px] text-[13.5px] text-[#4C5C7A] sm:text-[14.5px]">
                     <span className="w-[14px] text-[#8891A8]">
                       +
                     </span>
                     Buffer for blocked account
                   </span>
-                  <span className="text-[14.5px] font-medium text-[#0B1B33]">
+                  <span className="whitespace-nowrap text-[13.5px] font-medium text-[#0B1B33] sm:text-[14.5px]">
                     EUR {fmt(BUFFER)}
                   </span>
                 </div>
-                <div className="flex items-center justify-between border-b border-[#EEF1FA] py-[11px]">
-                  <span className="inline-flex items-center gap-[6px] text-[14.5px] text-[#4C5C7A]">
+                <div className="flex items-center justify-between gap-3 border-b border-[#EEF1FA] py-[11px]">
+                  <span className="inline-flex items-center gap-[6px] text-[13.5px] text-[#4C5C7A] sm:text-[14.5px]">
                     <span className="w-[14px] text-[#8891A8]">
                       +
                     </span>
                     Setup fee
                   </span>
-                  <span className="text-[14.5px] font-medium text-[#0B1B33]">
+                  <span className="whitespace-nowrap text-[13.5px] font-medium text-[#0B1B33] sm:text-[14.5px]">
                     EUR {fmt(SETUP_FEE)}
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-[11px]">
-                  <span className="inline-flex items-center gap-[6px] text-[14.5px] text-[#4C5C7A]">
+                <div className="flex items-center justify-between gap-3 py-[11px]">
+                  <span className="inline-flex items-center gap-[6px] text-[13.5px] text-[#4C5C7A] sm:text-[14.5px]">
                     <span className="w-[14px] text-[#8891A8]">
                       +
                     </span>
                     Administrative fees
                   </span>
-                  <span className="text-[14.5px] font-medium text-[#0B1B33]">
+                  <span className="whitespace-nowrap text-[13.5px] font-medium text-[#0B1B33] sm:text-[14.5px]">
                     EUR {fmt(ADMIN_FEE)}
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="mx-[26px] mb-[26px] mt-[14px] flex items-end justify-between gap-3 rounded-2xl bg-gradient-to-r from-[#16308C] to-[#2F5AF5] px-[22px] py-5 text-white">
-              <span className="max-w-[130px] text-[13px] leading-[1.4] opacity-85">
+            <div className="mx-5 mb-5 mt-[14px] flex flex-col items-start justify-between gap-1 rounded-2xl bg-gradient-to-r from-[#16308C] to-[#2F5AF5] px-5 py-5 text-white sm:mx-[26px] sm:mb-[26px] sm:flex-row sm:items-end sm:gap-3 sm:px-[22px]">
+              <span className="text-[13px] leading-[1.4] opacity-85 sm:max-w-[130px]">
                 Total blocked amount, due at setup
               </span>
-              <span className="whitespace-nowrap text-[30px] font-semibold tracking-[-0.01em]">
+              <span className="whitespace-nowrap text-[26px] font-semibold tracking-[-0.01em] sm:text-[30px]">
                 EUR {fmt(animatedTotal)}
               </span>
             </div>
 
-            <div className="px-[26px] pb-[22px] text-center text-[11.5px] text-[#8891A8]">
+            <div className="px-5 pb-[22px] text-center text-[11.5px] text-[#8891A8] sm:px-[26px]">
               Based on the current DAAD minimum guidance of EUR 992 / month - editable
             </div>
           </div>

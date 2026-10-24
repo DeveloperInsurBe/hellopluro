@@ -368,7 +368,6 @@ export default function Navbar() {
             >
               {[
                 ["/", "Home"],
-                ["#", "Private Health insurance"],
                 ["/statutory-health-insurance", "Statutory Health insurance"],
                 ["/services", "Services"],
                 ["/partners", "Partners"],

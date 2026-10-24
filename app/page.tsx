@@ -1,5 +1,6 @@
 "use client";
 
+import AppDownloadSection from "@/components/AppDownloadSection";
 import BlockedAccountSection from "@/components/BlockedAccountSection";
 import DashboardFeaturesSection from "@/components/DashboardFeaturesSection";
 import FAQSection from "@/components/FAQSection";
@@ -14,6 +15,7 @@ export default function Home() {
     <div className="flex flex-col bg-white overflow-hidden ">
       <HeroSectionHome/>
       <TrustFeaturesStrip/>
+      <AppDownloadSection/>
       {/* <PartnersSection/> */}
       <BlockedAccountSection/>
       <StepsSection/>
