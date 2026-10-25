@@ -4,6 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+const SERVICE_LINKS = [
+  ["/services", "Blocked Account"],
+  ["/travel-health-insurance", "Travel Health Insurance for Visa"],
+  ["/private-health-insurance", "Private Health Insurance"],
+  ["/statutory-health-insurance", "Statutory Health Insurance"],
+  ["/our-packages", "Our Packages"],
+] as const;
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isInsuranceMenuOpen, setIsInsuranceMenuOpen] = useState(false);
@@ -163,7 +171,7 @@ export default function Navbar() {
                     "#374151";
                 }}
               >
-                Insurance For Visa
+                Our Services
               </button>
               {isInsuranceMenuOpen && (
                 <div
@@ -171,7 +179,7 @@ export default function Navbar() {
                     position: "absolute",
                     top: "100%",
                     left: 0,
-                    minWidth: "230px",
+                    minWidth: "270px",
                     background: "#fff",
                     border: "1px solid #e5e7eb",
                     borderRadius: "12px",
@@ -186,8 +194,10 @@ export default function Navbar() {
                   onMouseEnter={openInsuranceMenu}
                   onMouseLeave={closeInsuranceMenuWithDelay}
                 >
+                  {SERVICE_LINKS.map(([href, label]) => (
                   <Link
-                    href="#"
+                    key={href}
+                    href={href}
                     style={{
                       display: "block",
                       padding: "10px 12px",
@@ -212,41 +222,14 @@ export default function Navbar() {
                     }}
                     onClick={closeInsuranceMenuNow}
                   >
-                    Private Health insurance
+                    {label}
                   </Link>
-                  <Link
-                    href="/statutory-health-insurance"
-                    style={{
-                      display: "block",
-                      padding: "10px 12px",
-                      borderRadius: "8px",
-                      color: "#374151",
-                      textDecoration: "none",
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      transition: "background 0.15s, color 0.15s",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.background =
-                        "#e6e6ff";
-                      (e.currentTarget as HTMLAnchorElement).style.color =
-                        "#0000FF";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.background =
-                        "transparent";
-                      (e.currentTarget as HTMLAnchorElement).style.color =
-                        "#374151";
-                    }}
-                    onClick={closeInsuranceMenuNow}
-                  >
-                    Statutory Health insurance
-                  </Link>
+                  ))}
                 </div>
               )}
             </div>
-            {(["/services", "/partners", "/about"] as const).map((href, i) => {
-              const labels = ["Services", "Partners", "About"];
+            {(["/partners", "/about"] as const).map((href, i) => {
+              const labels = ["Partners", "About"];
               return (
                 <NavLink key={href} href={href}>
                   {labels[i]}
@@ -368,8 +351,7 @@ export default function Navbar() {
             >
               {[
                 ["/", "Home"],
-                ["/statutory-health-insurance", "Statutory Health insurance"],
-                ["/services", "Services"],
+                ...SERVICE_LINKS,
                 ["/partners", "Partners"],
                 ["/about", "About"],
               ].map(([href, label]) => (
