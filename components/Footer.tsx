@@ -16,11 +16,11 @@ export default function Footer() {
           {/* LOGO */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/pluro-logo.png"
+              src="/pluro-logo-v2.png"
               alt="Pluro"
-              width={1648}
-              height={648}
-              className="h-10 w-auto object-contain"
+              width={1731}
+              height={440}
+              className="h-8 w-auto object-contain"
             />
           </Link>
 

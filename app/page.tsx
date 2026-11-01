@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-white overflow-x-clip">
       <HeroBannerHome/>
-      <HeroSectionHome/>
+      {/* <HeroSectionHome/> */}
       <TrustFeaturesStrip/>
       <AppDownloadSection/>
       {/* <PartnersSection/> */}

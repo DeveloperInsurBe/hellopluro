@@ -121,13 +121,13 @@ export default function Navbar() {
             }}
           >
             <Image
-              src="/pluro-logo.png"
+              src="/pluro-logo-v2.png"
               alt="Pluro"
-              width={1648}
-              height={648}
+              width={1731}
+              height={440}
               priority
               style={{
-                height: "40px",
+                height: "30px",
                 width: "auto",
                 objectFit: "contain",
               }}
