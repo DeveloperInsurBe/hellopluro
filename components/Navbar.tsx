@@ -3,6 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Smartphone } from "lucide-react";
+import GetAppDrawer from "./GetAppDrawer";
+
+// Total height taken by the floating navbar (top gap + pill). Used by the home
+// hero to slide its background image underneath the navbar.
+export const NAVBAR_OFFSET = 84;
 
 const SERVICE_LINKS = [
   ["/services", "Blocked Account"],
@@ -15,6 +22,8 @@ const SERVICE_LINKS = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isInsuranceMenuOpen, setIsInsuranceMenuOpen] = useState(false);
+  const [showAppButton, setShowAppButton] = useState(false);
+  const [isAppDrawerOpen, setIsAppDrawerOpen] = useState(false);
   const insuranceMenuRef = useRef<HTMLDivElement | null>(null);
   const closeInsuranceMenuTimeout = useRef<ReturnType<typeof setTimeout> | null>(
     null
@@ -61,31 +70,38 @@ export default function Navbar() {
     };
   }, []);
 
+  // Show the "Get the app" button in the navbar once the user scrolls down
+  useEffect(() => {
+    const onScroll = () => setShowAppButton(window.scrollY > 400);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
+    <>
     <nav
       style={{
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: "rgba(255,255,255,0.92)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        borderBottom: "1px solid #e5e7eb",
-        boxShadow: "0 1px 16px rgba(0,0,255,0.08)",
-        transition: "all 0.3s",
+        padding: "16px 16px 0",
+        background: "transparent",
+        pointerEvents: "none",
       }}
     >
-      {/* TOP TEAL ACCENT BAR — matches ContactModal */}
+      {/* FLOATING PILL */}
       <div
         style={{
-          height: "3px",
-          background: "linear-gradient(90deg, #0000FF, #3333FF, #6666FF)",
-          width: "100%",
+          maxWidth: "1280px",
+          margin: "0 auto",
+          padding: "0 1.25rem 0 1.75rem",
+          background: "#fff",
+          borderRadius: isOpen ? "28px" : "9999px",
+          boxShadow: "0 10px 30px rgba(11,27,51,0.14)",
+          pointerEvents: "auto",
+          transition: "border-radius 0.2s",
         }}
-      />
-
-      <div
-        style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}
       >
         <div
           style={{
@@ -105,13 +121,13 @@ export default function Navbar() {
             }}
           >
             <Image
-              src="/pluronew.png"
+              src="/pluro-logo.png"
               alt="Pluro"
-              width={2009}
-              height={783}
+              width={1648}
+              height={648}
               priority
               style={{
-                height: "44px",
+                height: "40px",
                 width: "auto",
                 objectFit: "contain",
               }}
@@ -123,6 +139,36 @@ export default function Navbar() {
             style={{ display: "flex", alignItems: "center", gap: "4px" }}
             className="navbar-desktop"
           >
+            {/* GET THE APP — appears on scroll */}
+            <AnimatePresence>
+              {showAppButton && (
+                <motion.button
+                  type="button"
+                  onClick={() => setIsAppDrawerOpen(true)}
+                  initial={{ opacity: 0, scale: 0.85, x: 12 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.85, x: 12 }}
+                  transition={{ duration: 0.25 }}
+                  style={{
+                    marginRight: "12px",
+                    padding: "10px 20px",
+                    borderRadius: "9999px",
+                    background: "#0000FF",
+                    color: "#fff",
+                    fontWeight: 600,
+                    fontSize: "14.5px",
+                    border: "none",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    boxShadow: "0 6px 16px rgba(0,0,255,0.25)",
+                  }}
+                >
+                  <Smartphone size={16} /> Get the app
+                </motion.button>
+              )}
+            </AnimatePresence>
             {(["/"] as const).map((href, i) => {
               const labels = ["Home"];
               return (
@@ -242,8 +288,8 @@ export default function Navbar() {
               href="/learn-more"
               style={{
                 marginLeft: "8px",
-                padding: "9px 20px",
-                borderRadius: "12px",
+                padding: "10px 22px",
+                borderRadius: "9999px",
                 background: "linear-gradient(135deg, #0000FF, #0000cc)",
                 color: "#fff",
                 fontWeight: 600,
@@ -431,6 +477,9 @@ export default function Navbar() {
         }
       `}</style>
     </nav>
+
+    <GetAppDrawer isOpen={isAppDrawerOpen} onClose={() => setIsAppDrawerOpen(false)} />
+    </>
   );
 }
 

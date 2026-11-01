@@ -27,7 +27,7 @@ const fadeUp: Variants = {
 };
 
 // Icons from Font Awesome Free (CC BY 4.0) - https://fontawesome.com/license/free
-function AppleIcon({ className }: { className?: string }) {
+export function AppleIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 -420 384 456" fill="currentColor" aria-hidden="true">
       <path
@@ -38,7 +38,7 @@ function AppleIcon({ className }: { className?: string }) {
   );
 }
 
-function AndroidIcon({ className }: { className?: string }) {
+export function AndroidIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 -400 576 390" fill="currentColor" aria-hidden="true">
       <path
